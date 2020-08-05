@@ -302,7 +302,9 @@ class Menu extends Template implements DataObject\IdentityInterface
         if (!isset($this->nodes[$level])) {
             return [];
         }
-        $parentId = $parent['node_id'] ?: 0;
+        $parentId = is_array($parent)
+            ? $parent['node_id'] ?: 0
+            : 0;
         if (!isset($this->nodes[$level][$parentId])) {
             return [];
         }
